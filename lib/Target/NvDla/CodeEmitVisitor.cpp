@@ -1095,6 +1095,9 @@ void CodeEmitVisitor::visit(const Softmax& pOp)
     oinfo.stride_surface
   );
   issueEmuOp(softmax_op);
+  errs() << "\n";
+  errs() << "\n";
+  errs() << "\n";
 }
 
 void CodeEmitVisitor::visit(const Concat& pOp) {
@@ -1137,6 +1140,9 @@ void CodeEmitVisitor::visit(const Concat& pOp) {
   for (int i = 0; i < input_inputs_ntensor; ++i){
     delete [] input_inputs_dims[i];
   }
+  errs() << "\n";
+  errs() << "\n";
+  errs() << "\n";
 };
 
 
@@ -1206,7 +1212,7 @@ int CodeEmitVisitor::packBias(const Tensor *t, int dims[4], int gidx)
   for(int c = 0; c < dims[0]; c++){
     *(dest + c) = __gnu_f2h_ieee(*(data + group_c + c));
   }
-  #if 0
+  
   for(int h = 0; h < dims[2]; h++){
     for(int w = 0; w < dims[3]; w++){
       for(int c = 0; c < dims[1]; c++){
@@ -1222,7 +1228,7 @@ int CodeEmitVisitor::packBias(const Tensor *t, int dims[4], int gidx)
       }
     }
   }
-  #endif
+  
 
   m_pMeta.m_Loadable.priv()->setSymbolContent(blob_name, b, blob_data);
 
