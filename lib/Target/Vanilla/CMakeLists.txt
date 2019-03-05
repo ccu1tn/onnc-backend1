@@ -1,4 +1,3 @@
-
 add_libonnc_src(
     VanillaBackend.cpp
     CodeEmitVisitor.cpp
